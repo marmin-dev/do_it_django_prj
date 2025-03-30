@@ -145,15 +145,23 @@
           <!-- Blog Post -->
             {% for p in post_list %}
           <div class="card mb-4 shadow-sm">
-            <img
-              class="bd-placeholder-img card-img-top"
-              width="100%"
-              height="300"
-              xmlns="http://www.w3.org/2000/svg"
-              src="{{ p.head_image.url }}"
-              role="img"
-            />
-
+            {% if p.head_img %}
+              <img
+                class="bd-placeholder-img card-img-top"
+                width="100%"
+                height="300"
+                src="{{ p.head_image.url }}"
+                role="img"
+              />
+            {% else %}
+              <img
+                class="bd-placeholder-img card-img-top"
+                width="100%"
+                height="300"
+                src="/media/default/images/P1030896.JPG"
+                role="img"
+              />
+            {% endif %}
             <div class="card-body">
               <h3><strong>{{ p.title }}</strong></h3>
               <p class="card-text">

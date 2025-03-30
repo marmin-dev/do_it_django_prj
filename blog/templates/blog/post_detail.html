@@ -60,16 +60,25 @@
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
                         </header>
                         <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="..." /></figure>
+                        <figure class="mb-4">
+                            {% if post.head_image %}
+                            <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="..." />
+                            {% else %}
+                            <img class="img-fluid rounded" src="/media/default/images/P1030896.JPG" alt="..." />
+                            {% endif %}
+                        </figure>
                         <!-- Post content-->
                         <section class="mb-5">
                             <p>
                                 {{ post.content }}
                             </p>
                         </section>
+                        {% if post.file_upload %}
+                        <button type="button" class="btn btn-outline-secondary">Download: {{ post.get_file_name }}</button>
+                        {% endif %}
                     </article>
                     <!-- Comments section-->
-                    <section class="mb-5">
+                    <section class="mb-5 my-4">
                         <div class="card bg-light">
                             <div class="card-body">
                                 <!-- Comment form-->
